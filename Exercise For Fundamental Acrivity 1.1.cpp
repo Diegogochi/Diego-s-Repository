@@ -18,3 +18,4 @@ int main(){
 		
 	printf("%.2f, %d\n", x, y);
 }
+
