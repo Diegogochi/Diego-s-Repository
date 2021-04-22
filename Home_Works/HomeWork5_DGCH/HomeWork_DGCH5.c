@@ -15,8 +15,8 @@ int main() {
 	/*RULES*/
 	printf("\tComo jugar\n:");
 	printf("Ponga el numero y la fila de la columna para abrirla.\n");
-	printf("Example: \"c3\" or \"3c\"\nTo set a flag enter the location + \"m\"\n");
-	printf("Example: \"8dm\" \"md8\" \"8md\"\nAnd to remove it do it again\n\n");
+	printf("Ejemplo: \"c3\" or \"3c\"Para poner una banderita digite la localizacion + \"m\"\n");
+	printf("Example: \"8dm\" \"md8\" \"8md\"\nY para removerlo hazlo de nuevo.\n\n");
 	do { //prints board
 		for(lett = 'A', i = 0; i != CONTL; i++, lett++)
 			printf("\t %c", lett), flag = 1;
@@ -41,7 +41,7 @@ int main() {
 			printf("_______|");
 		printf("\n");
 		if(c == PERD) {
-			printf("\nYou lost!\n");
+			printf("\nHaz Perdido. F\n");
 			break;
 		}	
 	} while((c = open()) != EOF && c != GANA);
