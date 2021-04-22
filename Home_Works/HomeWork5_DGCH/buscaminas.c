@@ -13,10 +13,10 @@ int open() {
 	int use = 1, use2 = 1;
 	int c, pos, block, a, b;
 	
-	while(wait) { //if the imput was invalid it reapeats
+	while(wait) { // Si el input ha sido valido se repite.
 		pos = block = did = save = 0, use = use2 = 1;
 		printf("\nPlease, Enter the row and column: ");	
-		while((c = getchar()) != EOF && c != '\n' && wait) { //takes imput
+		while((c = getchar()) != EOF && c != '\n' && wait) { //Se toma el input . 
 			if(c == '0' && save)
 				pos += 90, save = 0;
 			else if(c == '1')
@@ -47,7 +47,7 @@ int open() {
 		return PERD;
 	}
 	
-	if(hash[a][b] != '-') //if is not blocked
+	if(hash[a][b] != '-') // Si no se bloquea.
 		hash[a][b] = nums[a][b] + '0';
 	
 	if(hash[a][b] == '0')
@@ -58,7 +58,7 @@ int open() {
 	else if (block)
 		hash[a][b] = '-';
 	
-	forloop(use2, CONTL*CONTL) //check if you won
+	forloop(use2, CONTL*CONTL) //Se checa si has ganado.
 		if(hash[use2/10][use2%10] != '#' || (hash[use2/10][use2%10] == '#' && nums[use2/10][use2%10] == -1))
 			use++;
 	if(use == 100){
