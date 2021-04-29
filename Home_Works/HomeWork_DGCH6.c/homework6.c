@@ -9,8 +9,8 @@ node* insert(char* u, char* p, node* pos, int d) {
   node* temp;
   if (pos == NULL) {
     pos = (node*)malloc(sizeof(node));
-    pos->user = u;
-    pos->password = p;
+    pos->usuario = u;
+    pos-> contraseña = p;
     pos->depth = d;
     printf ("Se ha registrado al usuario <%s> con la contraseña <%s>\n\n", u, p);
     /*
@@ -21,25 +21,25 @@ node* insert(char* u, char* p, node* pos, int d) {
     dos cadenas despreciando mayúsculas y minúsculas, como stricmp
     */
   } else {
-    if (strcmp(pos->user, u) == 0) {
-      if (pos->password!=NULL){
+    if (strcmp(pos->usuario, u) == 0) {
+      if (pos->contraseña!=NULL){
       printf("Este usuario ya estaba registrado\n\n");
       }
       else{
-          pos->password = p;
+          pos->contraseña = p;
           printf ("Se ha registrado al usuario <%s> con la contraseña <%s>\n\n", u, p);
       }
-    } else if (strcmp(pos->user, u)>0) { // value is smaller     si pos->value > value
+    } else if (strcmp(pos->usuario, u)>0) { // value is smaller     si pos->value > value
       /*printf("Registro algo menor\n\n");*/
-      temp = insert(u, p, pos->leftChild, d + 1);
-      if (pos->leftChild == NULL) {
-	pos->leftChild = temp;
+      temp = insert(u, p, pos->niñoizquierdo, d + 1);
+      if (pos->niñoizquierdo == NULL) {
+	pos->niñoizquierdo = temp;
       }
-    } else if (strcmp(pos->user, u)<0){
-      temp = insert(u, p, pos->rightChild, d + 1); // value is larger
+    } else if (strcmp(pos->usuario, u)<0){
+      temp = insert(u, p, pos->niñoderecho, d + 1); // value is larger
       /*printf("Registro algo mayor\n\n");*/
-      if (pos->rightChild == NULL) {
-	pos->rightChild = temp;
+      if (pos->niñoderecho == NULL) {
+	pos->niñoderecho = temp;
       }
     }
   }
@@ -48,11 +48,11 @@ node* insert(char* u, char* p, node* pos, int d) {
 
 void alpha(node* position) {
   if (position != NULL) {
-    alpha(position->leftChild);
-    if (position->password!=NULL){
-    printf("%s ", position->user);
+    alpha(position->niñoizquierdo);
+    if (position->contraseña!=NULL){
+    printf("%s ", position->usuario);
     }
-    alpha(position->rightChild);
+    alpha(position->niñoderecho);
   }
 }
 
@@ -65,10 +65,10 @@ void delete(node* position, char* u, char* p, int* n){/////// A la funcion elimi
     //si no checa que el usuario y la contraseña sean correctas
     if (position != NULL) {
         
-        delete (position->leftChild, u, p, n);
-        delete (position->rightChild, u, p, n);
-        if (strcmp(position->user, u) == 0&&strcmp(position->password, p) == 0){
-            position->password=NULL;
+        delete (position->niñoizquierdo, u, p, n);
+        delete (position->niñoderecho, u, p, n);
+        if (strcmp(position->usuario, u) == 0&&strcmp(position->contraseña, p) == 0){
+            position->contraseña=NULL;
             printf("Usuario %s eliminado\n\n", u);
             *n = 1;
         }
@@ -101,14 +101,14 @@ int main() {
         }
     }
     if (strstr(linea, "del") != NULL&&strlen(linea)>=7&&contadorespacios==2) { // if we found  "del" we need to delete
-      get(linea, password, user);
-      u = (char*)malloc(sizeof(int*) * strlen(user));
-      p = (char*)malloc(sizeof(int*) * strlen(password));
+      get(linea, contraseña, user);
+      u = (char*)malloc(sizeof(int*) * strlen(usuario));
+      p = (char*)malloc(sizeof(int*) * strlen(contraseña));
       for (i=0; i<strlen(user);i++){
           u[i]=user[i];
       }
-      for (i=0; i<strlen(password);i++){
-          p[i]=password[i];
+      for (i=0; i<strlen(contraseña);i++){
+          p[i]=contraseña[i];
       }
       /// De este modo es igual usar p o password 
       indicador=0;
@@ -122,27 +122,27 @@ int main() {
     }
     
     else if (strstr(linea, "add") != NULL&&strlen(linea)>=7&&contadorespacios==2) { // if we found  "add" we need to add
-      get(linea, password, user);
-      u = (char*)malloc(sizeof(int*) * strlen(user));
-      p = (char*)malloc(sizeof(int*) * strlen(password));
+      get(linea, contraseña, user);
+      u = (char*)malloc(sizeof(int*) * strlen(usuario));
+      p = (char*)malloc(sizeof(int*) * strlen(contraseña));
       for (i=0; i<strlen(user);i++){
           u[i]=user[i];
       }
-      for (i=0; i<strlen(password);i++){
-          p[i]=password[i];
+      for (i=0; i<strlen(contraseña);i++){
+          p[i]=contraseña[i];
       }
       /*
       printf ("%s %s end\n", password, user);
       printf ("%s %s end\n", p, u);*/
       /// De este modo es igual usar p o password 
-      if (strlen(contraseña)>0&&strlen(user)>0){
+      if (strlen(contraseña)>0&&strlen(usuario)>0){
       n = insert(u,p, tree, 0); /// En este momento se crea el registro
 	  if (tree == NULL) {
 	    tree = n; // this is the root
 	    }
 	   contadorespacios=0;
       }
-      else if (strlen(password)<=0||strlen(user)<=0){
+      else if (strlen(contraseña)<=0||strlen(usuario)<=0){
           printf ("Checa tu entrada\n\n");
       }
       }// aqui termina el add 
