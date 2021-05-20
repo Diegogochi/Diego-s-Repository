@@ -3,7 +3,6 @@
 ## Function of the Program
 - The purpose of this program is to show a system similar (if not, identical) to the one we see on theaters.   
 
-![](https://www.cinepremiere.com.mx/wp-content/uploads/2020/03/cinépolis.jpg)
 
 ## Link to the Video
 
