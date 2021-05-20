@@ -5,6 +5,10 @@
 
 ![](https://www.cinepremiere.com.mx/wp-content/uploads/2020/03/cinépolis.jpg)
 
+## Link to the Video
+
+`<link>` https://www.youtube.com/watch?v=WnIt6L4iJE8&t=20s
+
 ## Functions of the program
 ### cine_cliente();
 This function is where the menu of the client is display, where he/she can choose what to do next.
@@ -1020,9 +1024,7 @@ void finalroom() {
 }
 }>
 
-## Link to the Video
 
-`<link>` https://www.youtube.com/watch?v=WnIt6L4iJE8&t=20s
 
 
  
