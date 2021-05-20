@@ -1,4 +1,4 @@
-# Header For the PIA
+# PIA Diego Gómez Chirinos
 
 ## For my PIA i will do a code base on an movie theater, where you choose your sit and the other systems
 - Like this:  
